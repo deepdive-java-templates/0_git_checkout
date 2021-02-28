@@ -19,7 +19,7 @@ public class Application {
 
     public static void main(String[] args) throws IOException {
         String token = Files.readString(FILE_NAME, StandardCharsets.UTF_8);
-        if(token == null || token.length() != 66) {
+        if(token == null || token.length() == 0) {
             System.err.println("Token was not found. Make sure you have a token.txt in the root of your exercises folder, with subfolders for each exercise.");
             System.exit(-1);
         }
@@ -31,7 +31,6 @@ public class Application {
         }
 
         final String apiUrl = "https://deep-dive-java-course.herokuapp.com/api/exercise/" + exerciseName;
-
         final RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
